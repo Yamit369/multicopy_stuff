@@ -28,10 +28,17 @@ if len(sys.argv) == 2:
         data[key] = pyperclip.paste()
         save_stuff(SAVE_DATA, data)
         print("Data is saved!")
+
     elif command == "load":
-        print("load")
+        key  = input("Enter a Key: ")
+        if key in data:
+            pyperclip.copy(data[key])
+            print('Data copy to the clipboard')
+        else:
+            print('Key does not exist!')
+
     elif  command == "list":
-        print("list")
+        print(data)
     else:
         print("Unknown command")
 else:
