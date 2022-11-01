@@ -2,6 +2,8 @@ import sys
 import pyperclip
 import json
 
+SAVE_DATA = "clipboard.json"
+
 def save_stuff(filepath, data):
     with open(filepath, "w") as f:
         json.dump(data, f)
@@ -15,10 +17,12 @@ def  load_json(filepath):
 
 if len(sys.argv) == 2:
     command = sys.argv[1]
-    print(command)
+    data = load_json(SAVE_DATA)
 
     if command == "save":
-        print("save")
+        key = input("Enter a key: ")
+        data[key] = pyperclip.paste()
+        save_stuff(SAVE_DATA, data)
     elif command == "load":
         print("load")
     elif  command == "list":
