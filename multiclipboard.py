@@ -10,9 +10,13 @@ def save_stuff(filepath, data):
 
 
 def  load_json(filepath):
-    with  open(filepath, "r") as f:
-        data = json.load(f)
-        return data
+    try:
+        with  open(filepath, "r") as f:
+            data = json.load(f)
+            return data
+    except:
+        return {}
+
 
 
 if len(sys.argv) == 2:
@@ -23,6 +27,7 @@ if len(sys.argv) == 2:
         key = input("Enter a key: ")
         data[key] = pyperclip.paste()
         save_stuff(SAVE_DATA, data)
+        print("Data is saved!")
     elif command == "load":
         print("load")
     elif  command == "list":
