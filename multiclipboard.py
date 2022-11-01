@@ -1,4 +1,5 @@
 import sys
+from winreg import DeleteKey
 import pyperclip
 import json
 
@@ -39,6 +40,11 @@ if len(sys.argv) == 2:
 
     elif  command == "list":
         print(data)
+    elif command == "delete":
+        key = input("Enter key: ")
+        if key in data:
+            pyperclip.DeleteKey(data[key])
+            print("Item hasbeing deleted")
     else:
         print("Unknown command")
 else:
