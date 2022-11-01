@@ -7,7 +7,10 @@ def save_stuff(filepath, data):
         json.dump(data, f)
 
 
-save_stuff("test.json", {"key": "value"})
+def  load_json(filepath):
+    with  open(filepath, "r") as f:
+        data = json.load(f)
+        return data
 
 
 if len(sys.argv) == 2:
